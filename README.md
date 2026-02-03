@@ -1,4 +1,6 @@
-﻿## R3M (standalone bundle)
+﻿![R3M architecture diagram](docs/images/r3m.png)
+
+## R3M (standalone bundle)
 
 This folder is intended to be a **self-contained mini-repo** for the R3M work:
 
