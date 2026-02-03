@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bbot-r3m"
+version = "0.1.0"
+description = "B-Bot R3M: recurrent memory mixing research models and training utilities."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "B-Bot Authors" }]
+dependencies = [
+  "torch>=2.2",
+  "transformers>=4.41",
+  "datasets>=2.18",
+  "accelerate>=0.30",
+  "numpy>=1.24",
+]
+
+[project.urls]
+Homepage = "https://github.com/beyondExp/bbot-r3m"
+Repository = "https://github.com/beyondExp/bbot-r3m"
+
+[tool.setuptools]
+packages = ["r3m"]
+include-package-data = true
+

@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use B-Bot R3M in research, please cite it."
+title: "B-Bot R3M: Recurrent Memory Mixing"
+type: software
+license: Apache-2.0
+authors:
+  - name: "B-Bot Authors"
+repository-code: "https://github.com/beyondExp/bbot-r3m"
+preferred-citation:
+  type: article
+  title: "B-Bot R3M: Recurrent Memory Mixing"
+  authors:
+    - name: "B-Bot Authors"
+  year: 2026
+  url: "https://github.com/beyondExp/bbot-r3m"
+

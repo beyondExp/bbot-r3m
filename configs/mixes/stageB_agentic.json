@@ -1,0 +1,9 @@
+﻿{
+  "name": "stageB_agentic",
+  "description": "Stage B agentic CPT/SFT mix (commercial-safe). Tool calling optionally uses XLAM if you have HF access; otherwise use synthetic tool-call rows.",
+  "sources": [
+    { "id": "ultrachat_200k", "hf_dataset": "HuggingFaceH4/ultrachat_200k", "split": "train_sft", "weight": 0.55 },
+    { "id": "oasst1", "hf_dataset": "OpenAssistant/oasst1", "split": "train", "weight": 0.25 },
+    { "id": "xlam_fc_60k", "hf_dataset": "Salesforce/xlam-function-calling-60k", "split": "train", "weight": 0.20, "optional": true }
+  ]
+}

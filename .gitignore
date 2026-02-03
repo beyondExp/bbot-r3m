@@ -1,0 +1,47 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Envs
+.venv/
+venv/
+
+# Outputs
+outputs/
+runs/
+checkpoints/
+*.pt
+*.safetensors
+
+# Data exports
+data_cache/
+*.jsonl
+
+# Tokbin / pretokenized caches (do not publish)
+data_cache_tok*/
+**/data_cache_tok*/
+*.tokens.bin
+*.prompt.bin
+*.tokens
+*.prompt
+*.bin
+
+# Logs
+*.log
+*.err.log
+*.out.log
+train_pid.txt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Secrets
+.env

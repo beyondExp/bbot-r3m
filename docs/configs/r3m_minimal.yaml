@@ -1,0 +1,75 @@
+# R³M minimal config stub
+# This is an internal research config (not wired into training code yet).
+
+model:
+  name: r3m-mini
+  vocab_size: 50257
+  d_model: 512
+  max_seq_len: 512
+
+  # Recurrent thinking loop
+  think_steps:
+    k_train: 8          # fixed steps during early training
+    k_max: 64           # maximum steps allowed
+    step_size_eta: 0.1  # scale on state updates (stability knob)
+
+  # Mixing / stability (mHC-inspired: convex mixing)
+  mixing:
+    streams: ["base", "memory"]     # add "tool" later
+    type: convex_softmax           # non-negative, sums to 1
+    temperature: 1.0
+
+  # Episodic memory (fast)
+  episodic_memory:
+    enabled: true
+    slots: 128
+    key_dim: 512
+    value_dim: 512
+    write:
+      enabled: true
+      gate_threshold: 0.5
+      write_budget_per_sample: 16  # soft budget (use as penalty later)
+      eviction: fifo               # fifo | priority
+
+  # Semantic memory (slow)
+  semantic_memory:
+    enabled: false                 # enable after episodic MVP works
+    type: bank                     # bank | slow_adapter
+    slots: 64
+
+  # Router / sparse experts
+  routing:
+    enabled: false
+    experts: ["base", "memory_ops", "planner", "tool_ops"]
+    top_k: 1
+
+  # Neuromodulator (surprise/utility)
+  neuromodulator:
+    enabled: true
+    features: ["entropy", "novelty"]  # expand with verifier feedback later
+
+  # Halting (adaptive compute)
+  halting:
+    enabled: false                  # enable after fixed-K success
+    threshold: 0.9
+    compute_penalty_lambda: 0.01
+
+tools:
+  enabled: false
+  max_tools: 16
+  # Reserve a stable interface from day 1, but keep it off initially.
+
+training:
+  objective: next_token
+  optimizer: adamw
+  learning_rate: 3.0e-4
+  weight_decay: 0.1
+  precision: bf16
+  gradient_clip_norm: 1.0
+
+eval:
+  report_k_sweep: [1, 2, 4, 8, 16, 32]
+  metrics: ["loss", "ppl", "accuracy", "avg_steps", "episodic_writes"]
+
+
+

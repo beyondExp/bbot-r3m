@@ -1,0 +1,8 @@
+﻿{
+  "name": "stageA_base",
+  "description": "Stage A base pretraining mix (commercial-safe). Defaults to fineweb; fineweb-edu is optional due to occasional streaming/schema issues.",
+  "sources": [
+    { "id": "fineweb", "hf_dataset": "HuggingFaceFW/fineweb", "split": "train", "weight": 0.15 },
+    { "id": "fineweb_edu", "hf_dataset": "HuggingFaceFW/fineweb-edu", "split": "train", "weight": 0.85, "optional": true }
+  ]
+}
